@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 7c8c39a..3bcd4b8 100644
+--- a/makefile_pmd_x64Linux3gcc4.8.2
++++ b/makefile_pmd_x64Linux3gcc4.8.2
+@@ -26,7 +26,7 @@ ifndef NDDSHOME
+ NDDSHOME := "/home/chris/rti_connext_dds-5.2.3"
+ endif
+ 
+-TARGET_ARCH = x64Linux3gcc4.8.2
++TARGET_ARCH = armv7aLinux3.12gcc4.9.3cortex-a9
+ 
+ ifndef COMPILER
+ COMPILER = g++

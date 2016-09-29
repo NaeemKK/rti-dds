@@ -1,0 +1,12 @@
+This directory must contain the binary bundles intended
+for the specific platform being built for.  The filename
+for the x86-64 bundle is
+
+rti_connext_dds-5.2.3-eval-x64Linux3.xgcc4.6.3-partial.tar.gz
+
+Note that this software is not open source and therefore
+cannot be included in this git repo.
+
+These must be manually created from the RTI packages for
+the specific target.
+

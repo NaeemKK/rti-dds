@@ -1,0 +1,71 @@
+U-Boot 2015.07 (Sep 08 2016 - 14:16:01 -0400)
+
+CPU:   Freescale i.MX6Q rev1.0 at 792MHz
+Reset cause: WDOG
+Board: SABRE Lite
+I2C:   ready
+DRAM:  1 GiB
+MMC:   FSL_SDHC: 0, FSL_SDHC: 1
+SF: Detected SST25VF016B with page size 256 Bytes, erase size 4 KiB, total 2 MiB
+auto-detected panel hannstar
+Display: lvds:hannstar (1024x768)
+In:    serial
+Out:   serial
+Err:   serial
+Net:   using phy at 6
+FEC
+Error: FEC address not set.
+, usb_ether
+Error: usb_ether address not set.
+
+Hit any key to stop autoboot:  0
+=> printe
+baudrate=115200
+board=sabrelite
+bootargs=console=ttymxc1,115200 root=/dev/mmcblk1p2 rw ip=dhcp rootwait video=mxcfb0:dev=ldb,LDB-XGA,if=RGB666  video=mxcfb1:off video=mxcfb2:off
+bootargs_nfs=setenv bootargs ${bootargs} root=/dev/nfs ip=dhcp nfsroot=${serverip}:${nfsroot},v3,tcp
+bootcmd=fatload mmc 1:1 10008000 zimage-mx6q.bin; fatload mmc 1:1 30000000 imx6q-sabrelite.dtb; bootz 10008000 - 30000000;
+bootcmd_mmc= for disk in 0 1 ; do mmc dev ${disk} ;for fs in fat ext2 ; do ${fs}load mmc ${disk}:1 10008000 /6q_bootscript && source 10008000 ; done ; done
+bootcmd_net=run bootargs_nfs;tftpboot ${loadaddr} ${kernel}; bootm
+bootdelay=3
+bootdir=/
+bootpart=2
+clearenv=sf probe 1 && sf erase 0xc0000 0x2000 && echo restored environment to factory default
+cmd_hdmi=fdt set fb_hdmi status disabled
+cmd_lcd=fdt set fb_lcd status disabled
+cmd_lvds=fdt set fb_lvds status okay;fdt set fb_lvds interface_pix_fmt RGB666;fdt set ldb/lvds-channel@0 fsl,data-width <18>;fdt set ldb/lvds-channel@0 fsl,data-mapping spwg;fdt set t_lvds clock-frequency <64998375>;fdt set t_lvds hactive <1024>;fdt set t_lvds vactive <768>;fdt set t_lvds hback-porch <220>;fdt set t_lvds hfront-porch <40>;fdt set t_lvds vback-porch <21>;fdt set t_lvds vfront-porch <7>;fdt set t_lvds hsync-len <60>;fdt set t_lvds vsync-len <10>;
+console=ttymxc0
+cpu=6Q
+default=-f -a
+dtbname=imx6q-sabrelite.dtb
+ethact=FEC
+ethprime=FEC0
+fdt_adddr=12000000
+fdt_addr=12000000
+fdt_high=0xffffffff
+filesize=a564
+ftd_high=0xffffffff
+ipaddr=192.168.1.103
+kernel=uImage
+loadaddr=0x10800000
+loaddtbaddr=0x20000000
+loadkernaddr=0x10800000
+mmcdev=1
+mpboot=run mpset1 ; run mpset3 ; bootm
+mpset1=setenv console ttymxc0; setenv loadaddr 0x10800000
+netdev=eth0
+netmask=255.255.255.0
+nfsroot=/opt/eldk/arm
+rd_loadaddr=0x11000000
+reset_cause=10
+serverip=192.168.1.101
+stderr=serial
+stdin=serial
+stdout=serial
+uboot=u-boot.bin
+uboot_defconfig=mx6qsabrelite
+upgradeu=for disk in 0 1 ; do mmc dev ${disk} ;for fs in fat ext2 ; do ${fs}load mmc ${disk}:1 10008000 /6q_upgrade && source 10008000 ; done ; done
+video=video=mxcdi0fb:RGB666,XGA ldb
+
+Environment size: 2171/8188 bytes
+=>

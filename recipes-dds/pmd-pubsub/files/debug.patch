@@ -1,0 +1,38 @@
+diff --git a/makefile_pmd_x64Linux3gcc4.8.2 b/makefile_pmd_x64Linux3gcc4.8.2
+index 7c8c39a..050a3e2 100644
+--- a/makefile_pmd_x64Linux3gcc4.8.2
++++ b/makefile_pmd_x64Linux3gcc4.8.2
+@@ -26,16 +26,16 @@ ifndef NDDSHOME
+ NDDSHOME := "/home/chris/rti_connext_dds-5.2.3"
+ endif
+ 
+-TARGET_ARCH = x64Linux3gcc4.8.2
++TARGET_ARCH = armv7aLinux3.12gcc4.9.3cortex-a9
+ 
+ ifndef COMPILER
+ COMPILER = g++
+ endif
+-COMPILER_FLAGS = -m64 -Wall
++# COMPILER_FLAGS = -m64 -Wall
+ ifndef LINKER
+ LINKER = g++
+ endif
+-LINKER_FLAGS = -m64 -static-libgcc -Wl,--no-as-needed
++# LINKER_FLAGS = -m64 -static-libgcc -Wl,--no-as-needed
+ SYSLIBS = -ldl -lnsl -lm -lpthread -lrt
+ DEFINES = -DRTI_UNIX -DRTI_LINUX -DRTI_64BIT 
+ 
+@@ -59,9 +59,13 @@ $(TARGET_ARCH) : $(DIRECTORIES) $(COMMONOBJS) \
+ 	$(EXEC:%=objs/$(TARGET_ARCH)/%)
+ 
+ objs/$(TARGET_ARCH)/% : objs/$(TARGET_ARCH)/%.o
++	echo "********Invoking the linker: $(LINKER)"
++	echo "********Linker flags = $(LINKER_FLAGS)"
+ 	$(LINKER) $(LINKER_FLAGS)   -o $@ $@.o $(COMMONOBJS) $(LIBS)
+ 
+ objs/$(TARGET_ARCH)/%.o : %.cxx  pmd.h 
++	echo "********Invoking the compiler: $(COMPILER)"
++	echo "********Compiler flags: $(COMPILER_FLAGS)"
+ 	$(COMPILER) $(COMPILER_FLAGS)  -o $@ $(DEFINES) $(INCLUDES) -c $<
+ 
+ #

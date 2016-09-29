@@ -1,0 +1,9 @@
+This directory is used to hold the RTI installers.  On
+this demo, the installers were called:
+
+rti_connext_dds-5.2.3-eval-i86Linux2.6gcc4.4.5.run
+rti_connext_dds-5.2.3-eval-x64Linux3.xgcc4.6.3.run
+
+They cannot be included in this git repo because they
+are not open source.  The developer must source
+these locally with proper licensing.

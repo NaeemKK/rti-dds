@@ -1,0 +1,12 @@
+This directory must contain the binary bundles intended
+for the specific platform being built for.  The filename
+for the ARM v7a bundle is
+
+armv7aLinux3.12gcc4.9.3cortex-a9-bundle.tar.gz
+
+Note that this software is not open source and therefore
+cannot be included in this git repo.
+
+These must be manually created from the RTI packages for
+the specific target.
+

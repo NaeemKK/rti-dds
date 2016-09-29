@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 3bcd4b8..0a5aefb 100644
+--- a/makefile_pmd_x64Linux3gcc4.8.2
++++ b/makefile_pmd_x64Linux3gcc4.8.2
+@@ -35,7 +35,7 @@ COMPILER_FLAGS = -m64 -Wall
+ ifndef LINKER
+ LINKER = g++
+ endif
+-LINKER_FLAGS = -m64 -static-libgcc -Wl,--no-as-needed
++# LINKER_FLAGS = -m64 -static-libgcc -Wl,--no-as-needed
+ SYSLIBS = -ldl -lnsl -lm -lpthread -lrt
+ DEFINES = -DRTI_UNIX -DRTI_LINUX -DRTI_64BIT 
+ 
