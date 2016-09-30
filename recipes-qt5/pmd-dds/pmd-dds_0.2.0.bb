@@ -4,8 +4,8 @@ HOMEPAGE = "http://www.mentor.com/"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420"
 
-RDEPENDS_${PN} = "qtbase"
-RDEPENDS_${PN}_mx6q += "rti-bundle-arm"
+DEPENDS += "qtbase"
+DEPENDS_append_mx6q += "rti-bundle-arm"
 
 DDS_ARCH = "armv7aLinux3.12gcc4.9.3cortex-a9"
 export DDS_ARCH

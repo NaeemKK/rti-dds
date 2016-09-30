@@ -5,11 +5,11 @@ LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420"
 
 DEPENDS += "qtbase liburcu rtidds"
-DEPENDS_mx6q_appends += "imx-gpu-viv"
+DEPENDS_append_mx6q += "imx-gpu-viv"
 
 # These are target binary runtime packages from RTI
-DEPENDS_mx6q += "rti-bundle-arm"
-DEPENDS_intel-corei7-64 += "rti-bundle"
+DEPENDS_append_mx6q += "rti-bundle-arm"
+DEPENDS_appendintel-corei7-64 += "rti-bundle"
 
 DDS_ARCH = "armv7aLinux3.12gcc4.9.3cortex-a9"
 export DDS_ARCH

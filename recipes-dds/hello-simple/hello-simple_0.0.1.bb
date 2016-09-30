@@ -4,9 +4,8 @@
 DESCRIPTION = "RTI Hello (hello_simple) demo"
 LICENSE = "CLOSED"
 
-#DEPENDS_mx6q += "rti-bundle-arm"
 do_compile[depends] += "rti-bundle-arm:do_populate_sysroot"
-DEPENDS_intel-corei7-64 += "rti-bundle"
+DEPENDS_append_intel-corei7-64 += "rti-bundle"
 
 DDS_ARCH_intel-corei7-64 = "x64Linux3.xgcc4.6.3"
 DDS_ARCH_mx6q = "armv7aLinux3.12gcc4.9.3cortex-a9"

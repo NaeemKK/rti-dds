@@ -8,4 +8,4 @@ LICENSE = "MIT"
 
 inherit core-image
 
-IMAGE_INSTALL += "rti-bundle-arm hello-simple pmd-datagen pmd-dds pub-server"
+IMAGE_INSTALL += "rti-bundle-arm hello-simple pmd-dds pub-server"
