@@ -144,5 +144,38 @@ do_install() {
     do
        install -m 755 ${NDDSHOME}/lib/${pf}/librti${i}.so ${D}${libdir}
     done
+
+    for i in                                                \
+        ndds ndds/advlog ndds/cdr ndds/clock ndds/commend   \
+        ndds/connext_c ndds/connext_cpp ndds/core_version   \
+        ndds/dds_c ndds/dds_cpp ndds/disc ndds/dl_driver    \
+        ndds/event ndds/log ndds/mig ndds/monitor           \
+        ndds/netio ndds/osapi ndds/pres ndds/reda           \
+        ndds/rtitls ndds/rtixml ndds/transport              \
+        ndds/transport_tcp ndds/writer_history              \
+        persistence routingservice rti_dl
+    do
+        install -m 755 -d ${D}${includedir}/${i}
+        install -m 644 ${NDDSHOME}/include/${i}/*.h         \
+           ${D}${includedir}/${i}/
+    done
+
+    for i in                                                \
+       ndds/hpp/dds ndds/hpp/rti ndds/hpp/rti/config        \
+       ndds/hpp/rti/core ndds/hpp/rti/domain                \
+       ndds/hpp/rti/pub ndds/hpp/rti/sub ndds/hpp/rti/test  \
+       ndds/hpp/rti/topic ndds/hpp/rti/util                 \
+       ndds/hpp/rtiboost ndds/hpp/rtiboost/config           \
+       ndds/hpp/rtiboost/detail ndds/hpp/rtiboost/exception \
+       ndds/hpp/rtiboost/functional ndds/hpp/rtiboost/mpl   \
+       ndds/hpp/rtiboost/preprocessor                       \
+       ndds/hpp/rtiboost/smart_ptr ndds/hpp/rtiboost/typeof \
+       ndds/hpp/rtiboost/type_traits                        \
+       ndds/hpp/rtiboost/utility
+    do
+        install -m 755 -d ${D}${includedir}/${i}
+        install -m 644 ${NDDSHOME}/include/${i}/*.hpp       \
+           ${D}${includedir}/${i}/
+    done
 }
 
