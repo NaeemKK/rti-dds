@@ -26,6 +26,7 @@ PACKAGES = "                                   \
     rti-dds-routing-dbg                        \
     rti-dds-infra                              \
     rti-dds-infra-dbg                          \
+    rti-dds-dev                                \
 "
 
 RDEPENDS_rti-dds-core = "glibc"
@@ -116,6 +117,10 @@ FILES_rti-dds-infra = "                        \
 
 FILES_rti-dds-infra-dbg = "                    \
     ${libdir}/.debug/librtirsinfrastructure.so \
+"
+
+FILES_rti-dds-dev = "                          \
+    ${includedir}/*                            \
 "
 
 do_configure[noexec] = "1" 
