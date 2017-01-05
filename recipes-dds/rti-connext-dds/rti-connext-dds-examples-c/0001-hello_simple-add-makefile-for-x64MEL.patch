@@ -1,0 +1,59 @@
+From 0972ab5c5894fc59d7ba159a0a1b4c239c5b23a3 Mon Sep 17 00:00:00 2001
+From: Adeel Arshad <adeel_arshad@mentor.com>
+Date: Thu, 5 Jan 2017 15:50:37 +0500
+Subject: [PATCH] hello_simple: add makefile for x64MEL
+
+Signed-off-by: Adeel Arshad <adeel_arshad@mentor.com>
+---
+ hello_simple/make/Makefile.common |  2 +-
+ hello_simple/make/Makefile.x64MEL | 25 +++++++++++++++++++++++++
+ 2 files changed, 26 insertions(+), 1 deletion(-)
+ create mode 100644 hello_simple/make/Makefile.x64MEL
+
+diff --git a/hello_simple/make/Makefile.common b/hello_simple/make/Makefile.common
+index ca392a6..d891b46 100644
+--- a/hello_simple/make/Makefile.common
++++ b/hello_simple/make/Makefile.common
+@@ -69,7 +69,7 @@ NDDSLIBS = -lnddscz -lnddscorez
+ endif
+ endif
+ 
+-LIBS = -L$(NDDSHOME)/lib/$(ARCH) $(NDDSLIBS) $(SYSLIBS)
++LIBS = -L$(NDDSHOME)/$(base_libdir) $(NDDSLIBS) $(SYSLIBS)
+ 
+ 
+ SOURCES = src/HelloPublisher.c          \
+diff --git a/hello_simple/make/Makefile.x64MEL b/hello_simple/make/Makefile.x64MEL
+new file mode 100644
+index 0000000..b28e263
+--- /dev/null
++++ b/hello_simple/make/Makefile.x64MEL
+@@ -0,0 +1,25 @@
++# Copyright (C) 2017 Mentor Graphics
++# Released under the MIT license (see COPYING.MIT for the terms)
++
++# Note:
++# - To use this Makefile, you must have the 'NDDSHOME' environment variable
++#   set to the location of RTI Connext.
++#
++# - You need to invoke the make command from the root directory of this example.
++#
++# - To enable debugging information, set the Makefile variable 'DEBUG' to '1'.
++# Example:
++#   make -f make/Makefile.x64MEL DEBUG=1
++
++# Defines required Make variables. They will be used in the Makefile.common
++# to define the rules to define the build process for this application.
++ARCH=$(NDDS_ARCH)
++
++CFLAGS += -DRTI_UNIX -DRTI_LINUX -DRTI_64BIT -m64
++CLD = $(CC)
++CLDFLAGS = $(LDFLAGS) -m64 -Wl,--no-as-needed
++SYSLIBS = -ldl -lnsl -lm -lpthread -lrt
++
++# The rest of the rules are in the 'Makefile.common'
++include make/Makefile.common
++
+-- 
+1.9.1
+
